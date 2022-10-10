@@ -41,7 +41,7 @@ No caso do Aerobox, https://solius.pt/pt/poupanca/bombas-de-calor/bombas-de-calo
 
 ![Aeroboxback](images/aeroboxback.png)
 
-Nota: este equipmanto já possui um interface WIFI que permite o controlo remoto. No entanto não tenho acesso à API de comunicação. Está a enviar informação para o endereço mapp.appsmb.com e hbtapp-prod.midea.com para poder comunicar com a aplicação ComfortHome.
+Nota: este equipamento já possui um interface WIFI que permite o controlo remoto. No entanto não tenho acesso à API de comunicação. Está a enviar informação para o endereço mapp.appsmb.com e hbtapp-prod.midea.com para poder comunicar com a aplicação ComfortHome.
 
 ### Interface Modbus
 
@@ -59,6 +59,7 @@ Endereço | Descrição | Valores | Meus dados
 40010 | Forced IBH1| | 0
 40011 | t_SG_Max| | 2
 
+Esta informação é útil mas não é necessária para a operação básica:
 
 Endereço | Descrição | Valores | Meus dados
 -------- | --------- | ------- | ----------
@@ -109,7 +110,11 @@ Tem três funções simples:
 ```
 Como exemplo, ao executar a aplicação como está, a temperatura é aumentada 1 grau.
 
-(Integração com HA em desenvolvimento)
+### Integração com Homeassistant
+
+Temos pelo menos duas hipóteses: via integração modbus ou desenvolvimento de addon.
+
+(em desenvolvimento...)
 
 ## VC Slim
 
