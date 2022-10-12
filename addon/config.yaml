@@ -1,0 +1,26 @@
+---
+version: 0.0.1
+slug: "solius_bridge"
+name: "Solius Bridge"
+description: "Integração de HomeAssistant com Solius"
+url: https://github.com/luisalvesmartins/solius
+arch:
+  - amd64
+  - i386
+  - armhf
+  - armv7
+  - aarch64
+init: false
+options:
+  aerobox_ip: null
+  aerobox_port: null
+  debug: null
+schema:
+  aerobox_ip: match(|[0-9a-fA-F]{32,32})?
+  aerobox_port: int
+  debug: list(none|info)
+stage: stable
+startup: services
+boot: auto
+ports:
+  8000/tcp: 8000

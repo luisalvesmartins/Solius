@@ -1,6 +1,10 @@
 # Solius
 Integração aplicacional com soluções Solius - HomeAssistant
 
+```
+Nota: Esta código não é suportado oficialmente pela Solius. É um esforço de comunidade. Utilize por sua conta e risco.
+```
+
 As soluções de climatização da Solius são económicas, fiáveis e possuem boa assistência, quer por parte dos instaladores, quer pela casa mãe.
 
 No entanto, não existem soluções de integração com aplicações de domótica. Cada sistema provém de um fabricante diferente e não é fácil harmonizar e consequentemente automatizar a nossa casa.
@@ -95,14 +99,14 @@ A aplicação nodeJS "aerobox.js" exemplifica o interface com o este dispositivo
 Tem três funções simples:
 - Ler temperatura - retorna array com as duas temperaturas
 ``` javascript
-    var resp=await getTemperature();
+    var resp=await getAeroboxTemperature();
 
     let temp1=resp[0];
     let temp2=resp[1];
 ```
 - Gravar temperatura 
 ``` javascript
-    await setTemperature(temp1,temp2);
+    await setAeroboxTemperature(temp1,temp2);
 ```
 - Debug registos - readHolding (start, length)
 ``` javascript
@@ -112,9 +116,11 @@ Como exemplo, ao executar a aplicação como está, a temperatura é aumentada 1
 
 ### Integração com Homeassistant
 
-Temos pelo menos duas hipóteses: via integração modbus ou desenvolvimento de addon.
-
-(em desenvolvimento...)
+A integração com o Homeassistant é feita através de um addon:
+1. `Settings` > `Add-ons` > `Add-on Store`
+2. menu no canto superior direito > `Repositories`
+3. Acrescente o URL `https://github.com/luisalvesmartins/solius`
+4. INSTALL
 
 ## VC Slim
 
