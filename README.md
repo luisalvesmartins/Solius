@@ -124,9 +124,44 @@ A integração com o Homeassistant é feita através de um addon:
 
 ## VC Slim
 
-(em desenvolvimento - Inverter SLE )
-
 ![VC](images/vc.png)
+
+Se tiver o interface wifi no inverter e utilizar a aplicação innovapp pode ligar o HA ao VC.
+
+O código a colocar na definição de sensor é:
+```
+- platform: rest
+  name: vc1
+  resource: http://****IP****/api/v/1/status
+  json_attributes:
+    - "net"
+    - "setup"
+    - "RESULT"
+  timeout: 15
+  value_template: "OK"
+- platform: template
+  sensors:
+      vc1_set_temp:
+        value_template: "{{ state_attr('sensor.vc1', 'RESULT')['sp']/10 }}"
+        device_class: temperature
+        unit_of_measurement: "°C"
+      vc1_ip:
+        value_template: "{{ state_attr('sensor.vc1', 'net')['ip'] }}"
+      vc1_serial:
+        value_template: "{{ state_attr('sensor.vc1', 'setup')['serial'] }}"
+      vc1_name:
+        value_template: "{{ state_attr('sensor.vc1', 'setup')['name'] }}"
+      vc1_ambient_temp:
+        value_template: "{{ state_attr('sensor.vc1', 'RESULT')['ta']/10 }}"
+        device_class: temperature
+        unit_of_measurement: "°C"
+      vc1_water_temp:
+        value_template: "{{ state_attr('sensor.vc1', 'RESULT')['tw']/10 }}"
+        device_class: temperature
+        unit_of_measurement: "°C"
+      vc1_fan:
+        value_template: "{{ state_attr('sensor.vc1', 'RESULT')['fn'] }}"
+```
 
 ## Solius 882 - Cronotermostato
 
