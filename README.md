@@ -201,6 +201,21 @@ Invocar o comando utilizando a temperatura x 10. Exemplo:
         content_type: 'application/json'
 ```
 
+### Fan Speed
+
+```yaml
+    vc_fan_max:
+        url: 'http://{{ vc_ip }}/api/v/1/set/function/max'
+        method: POST
+        content_type: 'application/json'
+
+    vc_fan_min:
+        url: 'http://{{ vc_ip }}/api/v/1/set/function/min'
+        method: POST
+        content_type: 'application/json'
+```
+
+
 ## Solius 882 - Cronotermostato
 
 (em desenvolvimento -  )
