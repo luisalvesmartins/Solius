@@ -129,7 +129,7 @@ A integração com o Homeassistant é feita através de um addon:
 Se tiver o interface wifi no inverter e utilizar a aplicação innovapp pode ligar o HA ao VC.
 
 O código a colocar na definição de sensor é:
-```
+```yaml
 - platform: rest
   name: vc1
   resource: http://****IP****/api/v/1/status
@@ -162,6 +162,29 @@ O código a colocar na definição de sensor é:
       vc1_fan:
         value_template: "{{ state_attr('sensor.vc1', 'RESULT')['fn'] }}"
 ```
+
+Para definir a temperatura pretendida, utilizar o rest_command:
+
+```yaml
+rest_command:
+    vc_set_temp:
+        url: 'http://{{ vc_ip }}/api/v/1/set/setpoint'
+        method: POST
+        content_type: 'application/json'
+        payload: '{"temp":{{vc_temp}} }'
+```
+
+Invocar o comando utilizando a temperatura x 10. Exemplo:
+
+```yaml
+    tap_action:
+      action: call-service
+      service: rest_command.vc_set_temp
+      data:
+        vc_ip: 192.168.7.128
+        vc_temp: '210'
+```
+
 
 ## Solius 882 - Cronotermostato
 
