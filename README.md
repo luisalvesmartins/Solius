@@ -191,12 +191,12 @@ Invocar o comando utilizando a temperatura x 10. Exemplo:
 
 ```yaml
     vc_power_off:
-        url: 'http://{{ vc_ip }}/api/v/1/set/power/off'
+        url: 'http://{{ vc_ip }}/api/v/1/power/off'
         method: POST
         content_type: 'application/json'
 
     vc_power_on:
-        url: 'http://{{ vc_ip }}/api/v/1/set/power/on'
+        url: 'http://{{ vc_ip }}/api/v/1/power/on'
         method: POST
         content_type: 'application/json'
 ```
